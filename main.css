@@ -1,0 +1,35 @@
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+}
+
+body {
+  font: 400 16px/1.5 Courier;
+  color: #111111;
+  background-color: #fdfdfd;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  -o-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: #287aff;
+}
+
+a:hover {
+  background-color: #9b9ea3;
+}
+
+.todoListContainer {
+
+}

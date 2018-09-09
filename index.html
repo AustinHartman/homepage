@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div class="row">
+      <div class="column">
+        <h2>Quick Links</h2>
+        <div id="siteList"></div>
+
+        <br>
+        <input type="text" placeholder="website title" name="website" id="newSite">
+        <br>
+        <input type="text" placeholder="URL" name="websiteLink" id="newSiteLink">
+        <input type="button" onclick="addSite()" value="add">
+
+        <br>
+        <input type="text" placeholder="remove site" id="removeLink">
+        <input type="button" onclick="removeSite()" value="remove">
+        <script src="scripts/siteList.js"></script>
+      </div>
+      <div class="column">
+        <h2>Todo List</h2>
+        <input type="text" placeholder="add task" name="website" id="addTodoList">
+        <label class="todoListContainer">
+        <div id="todoList"></div>
+        </label>
+        <script src="scripts/todo.js"></script>
+      </div>
+  </div>
+  </body>
+</html>
