@@ -39,7 +39,8 @@ for (var i = 0; i < td.length; i++) {
 document.getElementById('todoList').innerHTML = result;
 
 
-const node = document.getElementById('addTodoList');
+var node = document.getElementById('addTodoList');
+node.focus();
 node.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         event.preventDefault();

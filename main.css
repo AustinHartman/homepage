@@ -33,3 +33,37 @@ a:hover {
 .todoListContainer {
 
 }
+
+input[type="text"] {
+  font: 400 16px/1.5 Courier;
+}
+
+.buttonRm {
+  font: 400 16px/1.5 Courier;
+  background-color: #fc3744;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.buttonRm:hover {
+  background-color: #ce232e;
+}
+
+.buttonAdd:hover {
+  background-color: #007a3c;
+}
+
+.buttonAdd {
+  font: 400 16px/1.5 Courier;
+  background-color: #00b75b;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
