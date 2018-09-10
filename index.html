@@ -3,9 +3,12 @@
   <head>
     <link rel="stylesheet" href="main.css">
   </head>
+  <div class="header">
+    header content
+  </div>
   <body>
-    <div class="row">
-      <div class="column">
+    <div class="content">
+      <div class="left">
         <h2>Quick Links</h2>
         <div id="siteList"></div>
 
@@ -14,13 +17,11 @@
         <br>
         <input type="text" placeholder="URL" name="websiteLink" id="newSiteLink">
         <input type="button" class="buttonAdd" onclick="addSite()" value="add">
-
-        <br>
         <input type="text" placeholder="remove site" id="removeLink">
         <input type="button" class="buttonRm" onclick="removeSite()" value="remove">
         <script src="scripts/siteList.js"></script>
       </div>
-      <div class="column">
+      <div class="right">
         <h2>Todo List</h2>
         <input type="text" placeholder="add task" name="website" id="addTodoList">
         <label class="todoListContainer">
@@ -28,6 +29,9 @@
         </label>
         <script src="scripts/todo.js"></script>
       </div>
-  </div>
+    </div>
+    <div class="footer">
+        footer content
+    </div>
   </body>
 </html>

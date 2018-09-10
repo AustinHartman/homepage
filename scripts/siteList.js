@@ -29,7 +29,7 @@ function removeSite() {
   }
   updateLinks(storedNames);
 }
-//
+
 var storedNames = JSON.parse(localStorage.getItem("savedSites"));
 var result = "";
 for (var i = 0; i < storedNames.length; i++) {
