@@ -16,9 +16,10 @@
         <input type="text" placeholder="website title" name="website" id="newSite">
         <br>
         <input type="text" placeholder="URL" name="websiteLink" id="newSiteLink">
-        <input type="button" class="buttonAdd" onclick="addSite()" value="add">
+        <input type="button" class="button" onclick="addSite()" id="add" value="add">
+        <br><br>
         <input type="text" placeholder="remove site" id="removeLink">
-        <input type="button" class="buttonRm" onclick="removeSite()" value="remove">
+        <input type="button" class="button" onclick="removeSite()" id="rm" value="remove">
         <script src="scripts/siteList.js"></script>
       </div>
       <div class="right">
@@ -31,7 +32,12 @@
       </div>
     </div>
     <div class="footer">
-        footer content
+        <div id="quoteDisplay">
+          <!-- disp here -->
+        </div>
+        <input type="button" class="button" onclick="newQuote()" value="new quote"></button>
+
+        <script src="scripts/quoteGen.js"></script>
     </div>
   </body>
 </html>
