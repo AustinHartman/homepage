@@ -1,21 +1,23 @@
 function countdown(minutes) {
 
   // set call to function count timer every second
-  var timerVar = setInterval(countTimer, 1000);
   var totalSeconds = 0;
   var remainingSeconds = 0;
-  function countTimer() {
+
+  var timeVar = setInterval(function() {
     if (totalSeconds >= minutes*60) {
       document.title = "Finished!";
+      alert("Done");
+      clearInterval(timeVar);
     } else {
       ++totalSeconds;
-      remainingSeconds = minutes*60 - totalSeconds;
-      var hour = Math.floor(remainingSeconds /3600);
-      var minute = Math.floor((remainingSeconds - hour*3600)/60);
-      var seconds = remainingSeconds - (hour*3600 + minute*60);
+      remainingSeconds = minutes * 60 - totalSeconds;
+      var hour = Math.floor(remainingSeconds / 3600);
+      var minute = Math.floor((remainingSeconds - hour * 3600) / 60);
+      var seconds = remainingSeconds - (hour * 3600 + minute * 60);
       document.title = hour + ":" + minute + ":" + seconds;
     }
-  }
+  }, 1000);
 }
 
 function getMinutes() {
