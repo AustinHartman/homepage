@@ -2,9 +2,16 @@
 <html>
   <head>
     <link rel="stylesheet" href="main.css">
+    <title>homepage</title>
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
   </head>
   <div class="header">
-    header content
+    <input type="text" placeholder="minutes" id="minuteInput">
+    <input type="button" class="button" onclick="getMinutes()" value="enter">
+    <!-- add in reset button -->
+    <div id="timer"></div>
+
+    <script src="scripts/timer.js"></script>
   </div>
   <body>
     <div class="content">

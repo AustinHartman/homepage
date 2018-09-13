@@ -2,8 +2,6 @@ function updateTodoLinks(list) {
   localStorage.setItem("todoList", JSON.stringify(list));
 }
 
-console.log(localStorage);
-
 function addTodo() {
   var td = JSON.parse(localStorage.getItem("todoList"));
   var newTask = document.getElementById("addTodoList").value;
