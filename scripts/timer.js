@@ -7,15 +7,27 @@ function countdown(minutes) {
   var timeVar = setInterval(function() {
     if (totalSeconds >= minutes*60) {
       document.title = "Finished!";
-      alert("Done");
       clearInterval(timeVar);
     } else {
       ++totalSeconds;
       remainingSeconds = minutes * 60 - totalSeconds;
-      var hour = Math.floor(remainingSeconds / 3600);
-      var minute = Math.floor((remainingSeconds - hour * 3600) / 60);
+      var hour    = Math.floor(remainingSeconds / 3600);
+      var minute  = Math.floor((remainingSeconds - hour * 3600) / 60);
       var seconds = remainingSeconds - (hour * 3600 + minute * 60);
-      document.title = hour + ":" + minute + ":" + seconds;
+
+      if (hour < 10) {
+        hour = '0' + hour;
+      }
+      if (minute < 10) {
+        minute = '0' + minute;
+      }
+      if (seconds < 10) {
+        seconds = '0' + seconds;
+      }
+      var text = hour + ":" + minute + ":" + seconds;
+      console.log(hour);
+      document.title = text;
+      document.getElementById("timer").innerHTML = text;
     }
   }, 1000);
 }
