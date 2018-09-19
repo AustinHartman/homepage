@@ -29,7 +29,7 @@ function removeTodoTask() {
   updateTodoLinks(tasks_storage);
 }
 
-  //<div class='box'></div></label>
+
 var td = JSON.parse(localStorage.getItem("todoList"));
 var result = "<label class='check'>";
 for (var i = 0; i < td.length; i++) {
