@@ -105,6 +105,15 @@ function updateLinks(storedNames) {
   localStorage.setItem("savedSites", JSON.stringify(storedNames));
 }
 
+function genSiteList() {
+  var storedNames = JSON.parse(localStorage.getItem("savedSites"));
+  var result = "";
+  for (var i = 0; i < storedNames.length; i++) {
+      result = result + "<a href='" + storedNames[i][1] + "'>"+ storedNames[i][0] + "</a><br>";
+  }
+  $("#siteList").html(result);
+}
+
 function addSite() {
   var storedNames = JSON.parse(localStorage.getItem("savedSites"));
   var newSite = document.getElementById("newSite").value;
@@ -113,7 +122,7 @@ function addSite() {
   if (newSite.length > 0 && newSiteLink.length) {
     storedNames.push([newSite, newSiteLink]);
     updateLinks(storedNames);
-    document.location.reload();
+    genSiteList();
   }
 }
 
@@ -126,19 +135,15 @@ function removeSite() {
     if (storedNames[i][0] == siteToRm) {
       storedNames.splice(i, 1);
       console.log(storedNames.length);
-      document.location.reload();
+      updateLinks(storedNames);
+      genSiteList();
       break;
     }
   }
-  updateLinks(storedNames);
 }
 
-var storedNames = JSON.parse(localStorage.getItem("savedSites"));
-var result = "";
-for (var i = 0; i < storedNames.length; i++) {
-    result = result + "<a href='" + storedNames[i][1] + "'>"+ storedNames[i][0] + "</a><br>";
-}
-document.getElementById('siteList').innerHTML = result;
+// init site list
+genSiteList();
 
 // SITE LIST END //
 
@@ -156,12 +161,12 @@ var quotes = [
   '"I\'d Rather Be Optimistic and Wrong, Than Be Pessimistic and Right." - Elon Musk',
 ]
 
-var quote_index = Math.floor(Math.random() * quotes.length);
-var result = "<p>" + quotes[quote_index] + "</p>";
-document.getElementById('quoteDisplay').innerHTML = result;
-
 function newQuote() {
-  document.location.reload();
+  var quote_index = Math.floor(Math.random() * quotes.length);
+  var result = "<p>" + quotes[quote_index] + "</p>";
+  $("#quoteDisplay").html(result);
 }
+
+newQuote();
 
 // QUOTE GEN END //
