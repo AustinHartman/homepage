@@ -19,10 +19,7 @@ function addTodo() {
 function removeTodoTask() {
   var tasks_storage = JSON.parse(localStorage.getItem("todoList"));
   var tasks = document.getElementsByClassName("todoItem");
-  console.log(tasks);
   for (let i=0; i<tasks.length; i++) {
-    console.log(tasks[i].checked);
-    console.log(tasks[i]);
     if (tasks[i].checked) {
       tasks_storage.splice(i, 1);
       updateTodoLinks(tasks_storage);
@@ -84,7 +81,6 @@ function countdown(minutes) {
         seconds = '0' + seconds;
       }
       var text = hour + ":" + minute + ":" + seconds;
-      console.log(hour);
       document.title = text;
       document.getElementById("timer").innerHTML = text;
     }
@@ -94,8 +90,6 @@ function countdown(minutes) {
 function getMinutes() {
   var m = document.getElementById("minuteInput").value;
   m = parseFloat(m);
-  console.log(m);
-  console.log(typeof(m));
   countdown(m);
 }
 
@@ -130,13 +124,11 @@ function addSite() {
 
 function removeSite() {
   var storedNames = JSON.parse(localStorage.getItem("savedSites"));
-  console.log(storedNames.length);
   var siteToRm = document.getElementById("removeLink").value;
 
   for (var i = 0; i < storedNames.length; i++) {
     if (storedNames[i][0] == siteToRm) {
       storedNames.splice(i, 1);
-      console.log(storedNames.length);
       updateLinks(storedNames);
       genSiteList();
       break;
