@@ -11,7 +11,8 @@ function addTodo() {
   if (newTask.length > 0) {
     td.push(newTask);
     updateTodoLinks(td);
-    document.location.reload();
+    document.getElementById('addTodoList').value = '';
+    genTodoList();
   }
 }
 
@@ -24,37 +25,38 @@ function removeTodoTask() {
     console.log(tasks[i]);
     if (tasks[i].checked) {
       tasks_storage.splice(i, 1);
-      document.location.reload();
+      updateTodoLinks(tasks_storage);
+      genTodoList();
       break;
     }
   }
-  updateTodoLinks(tasks_storage);
 }
 
+function genTodoList() {
+  var td = JSON.parse(localStorage.getItem("todoList"));
+  var result = "<label class='check'>";
+  for (var i = 0; i < td.length; i++) {
+      result += "<input type='checkbox' class='todoItem' onclick='removeTodoTask()' value='" + td[i] + "'>" + td[i] + "</input><br>";
+  }
+  result += "<div class='box'></div></label>";
+  document.getElementById('todoList').innerHTML = result;
 
-var td = JSON.parse(localStorage.getItem("todoList"));
-var result = "<label class='check'>";
-for (var i = 0; i < td.length; i++) {
-    result += "<input type='checkbox' class='todoItem' onclick='removeTodoTask()' value='" + td[i] + "'>" + td[i] + "</input><br>";
+
+  var node = document.getElementById('addTodoList');
+  node.focus();
+  node.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+          event.preventDefault();
+          addTodo();
+      }
+  });
 }
-result += "<div class='box'></div></label>";
-document.getElementById('todoList').innerHTML = result;
 
-
-var node = document.getElementById('addTodoList');
-node.focus();
-node.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        addTodo();
-    }
-});
+genTodoList();
 
 // TO DO END //
 
 // TIMER //
-
-var cancelled = false;
 
 function countdown(minutes) {
   // set call to function count timer every second
