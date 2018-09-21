@@ -1,3 +1,5 @@
+var active = false;
+
 // TO DO //
 
 function updateTodoLinks(list) {
@@ -55,22 +57,31 @@ genTodoList();
 
 // TIMER //
 
+
+$("#timer").text("00:00:00");
+
 function countdown(minutes) {
   // set call to function count timer every second
   var totalSeconds = 0;
   var remainingSeconds = 0;
 
   var timeVar = setInterval(function() {
-    if (totalSeconds >= minutes*60) {
-      document.title = "Finished!";
+    if (!active) {
+      $("title").text("homepage");
+      $("#timer").text("00:00:00");
       clearInterval(timeVar);
-    } else {
+    }
+    else if (totalSeconds >= minutes*60) {
+      document.title = "Finished!";
+      active = false;
+      clearInterval(timeVar);
+    }
+    else {
       ++totalSeconds;
       remainingSeconds = minutes * 60 - totalSeconds;
       var hour    = Math.floor(remainingSeconds / 3600);
       var minute  = Math.floor((remainingSeconds - hour * 3600) / 60);
       var seconds = Math.floor(remainingSeconds - (hour * 3600 + minute * 60));
-
       if (hour < 10) {
         hour = '0' + hour;
       }
@@ -81,13 +92,20 @@ function countdown(minutes) {
         seconds = '0' + seconds;
       }
       var text = hour + ":" + minute + ":" + seconds;
-      document.title = text;
-      document.getElementById("timer").innerHTML = text;
+      console.log(text);
+      $("title").text(text);
+      $("#timer").text(text);
     }
   }, 1000);
+
+  $("#timer").text("00:00:00");
+
 }
 
+
 function getMinutes() {
+  console.log(active);
+  if (active) return;
   var m = document.getElementById("minuteInput").value;
   m = parseFloat(m);
   countdown(m);

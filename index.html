@@ -8,9 +8,9 @@
   <div class="header">
     Timer:
     <input type="text" placeholder="minutes" id="minuteInput">
-    <input type="button" class="button" onclick="getMinutes()" value="enter">
-    <input type="button" class="button" onclick="abort = true;" value="reset">
-    <div id="timer">00:00:00</div>
+    <input type="button" class="button" onclick="getMinutes(); active=true;" value="enter">
+    <input type="button" class="button" onclick="active = false;" value="reset">
+    <div id="timer"></div>
   </div>
   <body>
     <div class="content">
