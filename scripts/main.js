@@ -6,6 +6,16 @@ function updateTodoLinks(list) {
   localStorage.setItem("todoList", JSON.stringify(list));
 }
 
+
+function updateOldTodo(list) {
+  localStorage.setItem("oldTodo", JSON.stringify(list));
+}
+
+function clearOldTodo() {
+  localStorage.setItem("oldTodo", JSON.stringify([]));
+  console.log(localStorage);
+}
+
 function addTodo() {
   var td = JSON.parse(localStorage.getItem("todoList"));
   var newTask = document.getElementById("addTodoList").value;
@@ -20,11 +30,17 @@ function addTodo() {
 
 function removeTodoTask() {
   var tasks_storage = JSON.parse(localStorage.getItem("todoList"));
+  var old_storage = JSON.parse(localStorage.getItem("oldTodo"));
+
   var tasks = document.getElementsByClassName("todoItem");
   for (let i=0; i<tasks.length; i++) {
     if (tasks[i].checked) {
+      console.log(tasks[i].value);
+      old_storage.push(tasks[i].value);
       tasks_storage.splice(i, 1);
       updateTodoLinks(tasks_storage);
+      updateOldTodo(old_storage);
+      console.log(localStorage);
       genTodoList();
       break;
     }
