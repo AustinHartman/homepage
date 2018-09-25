@@ -11,11 +11,6 @@ function updateOldTodo(list) {
   localStorage.setItem("oldTodo", JSON.stringify(list));
 }
 
-function clearOldTodo() {
-  localStorage.setItem("oldTodo", JSON.stringify([]));
-  console.log(localStorage);
-}
-
 function addTodo() {
   var td = JSON.parse(localStorage.getItem("todoList"));
   var newTask = document.getElementById("addTodoList").value;
