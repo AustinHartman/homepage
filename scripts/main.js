@@ -26,6 +26,11 @@ function addTodo() {
 function removeTodoTask() {
   var tasks_storage = JSON.parse(localStorage.getItem("todoList"));
   var old_storage = JSON.parse(localStorage.getItem("oldTodo"));
+  if (!old_storage) {
+    old_storage = []
+    updateOldTodo(old_storage);
+    var old_storage = JSON.parse(localStorage.getItem("oldTodo"));
+  }
 
   var tasks = document.getElementsByClassName("todoItem");
   for (let i=0; i<tasks.length; i++) {
@@ -42,16 +47,25 @@ function removeTodoTask() {
   }
 }
 
-function genTodoList() {
+function getTodoList() {
   var td = JSON.parse(localStorage.getItem("todoList"));
+  if (!td) {
+    td = ['find something to do'];
+    updateTodoLinks(td);
+    return JSON.parse(localStorage.getItem("todoList"));
+  }
+  return td;
+}
+
+function genTodoList() {
+  var td = getTodoList();
+
   var result = "<label class='check'>";
   for (var i = 0; i < td.length; i++) {
       result += "<input type='checkbox' class='todoItem' onclick='removeTodoTask()' value='" + td[i] + "'>" + td[i] + "</input><br>";
   }
   result += "<div class='box'></div></label>";
   document.getElementById('todoList').innerHTML = result;
-
-
   var node = document.getElementById('addTodoList');
   node.focus();
   node.addEventListener("keydown", function(event) {
@@ -132,6 +146,10 @@ function updateLinks(storedNames) {
 
 function genSiteList() {
   var storedNames = JSON.parse(localStorage.getItem("savedSites"));
+  if (!storedNames) {
+    storedNames = [['add something', '#']];
+  }
+
   var result = "";
   for (var i = 0; i < storedNames.length; i++) {
       result = result + "<a href='" + storedNames[i][1] + "'>"+ storedNames[i][0] + "</a><br>";
