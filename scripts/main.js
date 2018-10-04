@@ -144,11 +144,18 @@ function updateLinks(storedNames) {
   localStorage.setItem("savedSites", JSON.stringify(storedNames));
 }
 
-function genSiteList() {
+function getSiteList() {
   var storedNames = JSON.parse(localStorage.getItem("savedSites"));
   if (!storedNames) {
-    storedNames = [['add something', '#']];
+    storedNames = ['find something to do'];
+    updateLinks(storedNames);
+    return JSON.parse(localStorage.getItem("savedSites"));
   }
+  return storedNames;
+}
+
+function genSiteList() {
+  var storedNames = getSiteList();
 
   var result = "";
   for (var i = 0; i < storedNames.length; i++) {
